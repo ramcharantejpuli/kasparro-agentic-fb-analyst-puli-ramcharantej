@@ -1,0 +1,17 @@
+# Core dependencies
+openai==1.54.3
+pandas==2.2.3
+numpy==1.26.4
+pyyaml==6.0.2
+python-dotenv==1.0.1
+
+# Data analysis
+scipy==1.14.1
+scikit-learn==1.5.2
+
+# Testing
+pytest==8.3.3
+pytest-cov==5.0.0
+
+# Utilities
+pydantic==2.9.2
