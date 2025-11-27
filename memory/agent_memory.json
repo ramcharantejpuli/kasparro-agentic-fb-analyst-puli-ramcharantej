@@ -1,0 +1,295 @@
+{
+  "insights_history": [
+    {
+      "timestamp": "2025-11-27T18:03:04.496060",
+      "insight": {
+        "id": "H1",
+        "hypothesis": "Overall ROAS decline of 3%",
+        "validation_method": "Statistical testing + segment comparison",
+        "statistical_tests": [
+          {
+            "test_name": "Two-sample t-test",
+            "comparison": "Overall ROAS (current vs previous)",
+            "statistic": -0.1,
+            "p_value": 0.9171,
+            "significant": false,
+            "effect_size": "small (Cohen's d = 0.01)"
+          }
+        ],
+        "quantitative_evidence": {
+          "metric_change": {
+            "metric": "ROAS",
+            "current": 7.87,
+            "previous": 7.96,
+            "absolute_change": -0.09,
+            "percent_change": -1.2,
+            "direction": "decline"
+          },
+          "sample_size": {
+            "current_n": 350,
+            "previous_n": 350,
+            "sufficient": true
+          }
+        },
+        "confidence_score": 0.8,
+        "confidence_rationale": "Strong statistical evidence with large effect size and sufficient sample",
+        "limitations": [
+          "Limited to available data dimensions",
+          "Cannot account for external factors"
+        ],
+        "actionable": true,
+        "recommended_action": "Investigate further and test solutions"
+      }
+    },
+    {
+      "timestamp": "2025-11-27T18:12:42.473196",
+      "insight": {
+        "id": "H1",
+        "hypothesis": "Overall ROAS decline of 3%",
+        "validation_method": "Statistical testing + segment comparison",
+        "statistical_tests": [
+          {
+            "test_name": "Two-sample t-test",
+            "comparison": "Overall ROAS (current vs previous)",
+            "statistic": -0.1,
+            "p_value": 0.9171,
+            "significant": false,
+            "effect_size": "small (Cohen's d = 0.01)"
+          }
+        ],
+        "quantitative_evidence": {
+          "metric_change": {
+            "metric": "ROAS",
+            "current": 7.87,
+            "previous": 7.96,
+            "absolute_change": -0.09,
+            "percent_change": -1.2,
+            "direction": "decline"
+          },
+          "sample_size": {
+            "current_n": 350,
+            "previous_n": 350,
+            "sufficient": true
+          }
+        },
+        "confidence_score": 0.8,
+        "confidence_rationale": "Strong statistical evidence with large effect size and sufficient sample",
+        "limitations": [
+          "Limited to available data dimensions",
+          "Cannot account for external factors"
+        ],
+        "actionable": true,
+        "recommended_action": "Investigate further and test solutions"
+      }
+    },
+    {
+      "timestamp": "2025-11-27T19:07:10.964204",
+      "insight": {
+        "id": "H1",
+        "hypothesis": "Overall ROAS decline of 3%",
+        "validation_method": "Statistical testing + segment comparison",
+        "statistical_tests": [
+          {
+            "test_name": "Two-sample t-test",
+            "comparison": "Overall ROAS (current vs previous)",
+            "statistic": -0.1,
+            "p_value": 0.9171,
+            "significant": false,
+            "effect_size": "small (Cohen's d = 0.01)"
+          }
+        ],
+        "quantitative_evidence": {
+          "metric_change": {
+            "metric": "ROAS",
+            "current": 7.87,
+            "previous": 7.96,
+            "absolute_change": -0.09,
+            "percent_change": -1.2,
+            "direction": "decline"
+          },
+          "sample_size": {
+            "current_n": 350,
+            "previous_n": 350,
+            "sufficient": true
+          }
+        },
+        "confidence_score": 0.8,
+        "confidence_rationale": "Strong statistical evidence with large effect size and sufficient sample",
+        "limitations": [
+          "Limited to available data dimensions",
+          "Cannot account for external factors"
+        ],
+        "actionable": true,
+        "recommended_action": "Investigate further and test solutions"
+      }
+    },
+    {
+      "timestamp": "2025-11-27T19:20:30.647164",
+      "insight": {
+        "id": "H1",
+        "hypothesis": "Overall ROAS decline of 3%",
+        "validation_method": "Statistical testing + segment comparison",
+        "statistical_tests": [
+          {
+            "test_name": "Two-sample t-test",
+            "comparison": "Overall ROAS (current vs previous)",
+            "statistic": -0.1,
+            "p_value": 0.9171,
+            "significant": false,
+            "effect_size": "small (Cohen's d = 0.01)"
+          }
+        ],
+        "quantitative_evidence": {
+          "metric_change": {
+            "metric": "ROAS",
+            "current": 7.87,
+            "previous": 7.96,
+            "absolute_change": -0.09,
+            "percent_change": -1.2,
+            "direction": "decline"
+          },
+          "sample_size": {
+            "current_n": 350,
+            "previous_n": 350,
+            "sufficient": true
+          }
+        },
+        "confidence_score": 0.8,
+        "confidence_rationale": "Strong statistical evidence with large effect size and sufficient sample",
+        "limitations": [
+          "Limited to available data dimensions",
+          "Cannot account for external factors"
+        ],
+        "actionable": true,
+        "recommended_action": "Investigate further and test solutions"
+      }
+    },
+    {
+      "timestamp": "2025-11-27T19:24:04.611807",
+      "insight": {
+        "id": "H1",
+        "hypothesis": "Overall ROAS decline of 3%",
+        "validation_method": "Statistical testing + segment comparison",
+        "statistical_tests": [
+          {
+            "test_name": "Two-sample t-test",
+            "comparison": "Overall ROAS (current vs previous)",
+            "statistic": -0.1,
+            "p_value": 0.9171,
+            "significant": false,
+            "effect_size": "small (Cohen's d = 0.01)"
+          }
+        ],
+        "quantitative_evidence": {
+          "metric_change": {
+            "metric": "ROAS",
+            "current": 7.87,
+            "previous": 7.96,
+            "absolute_change": -0.09,
+            "percent_change": -1.2,
+            "direction": "decline"
+          },
+          "sample_size": {
+            "current_n": 350,
+            "previous_n": 350,
+            "sufficient": true
+          }
+        },
+        "confidence_score": 0.8,
+        "confidence_rationale": "Strong statistical evidence with large effect size and sufficient sample",
+        "limitations": [
+          "Limited to available data dimensions",
+          "Cannot account for external factors"
+        ],
+        "actionable": true,
+        "recommended_action": "Investigate further and test solutions"
+      }
+    },
+    {
+      "timestamp": "2025-11-27T19:27:42.503228",
+      "insight": {
+        "id": "H1",
+        "hypothesis": "Overall ROAS decline of 3%",
+        "validation_method": "Statistical testing + segment comparison",
+        "statistical_tests": [
+          {
+            "test_name": "Two-sample t-test",
+            "comparison": "Overall ROAS (current vs previous)",
+            "statistic": -0.1,
+            "p_value": 0.9171,
+            "significant": false,
+            "effect_size": "small (Cohen's d = 0.01)"
+          }
+        ],
+        "quantitative_evidence": {
+          "metric_change": {
+            "metric": "ROAS",
+            "current": 7.87,
+            "previous": 7.96,
+            "absolute_change": -0.09,
+            "percent_change": -1.2,
+            "direction": "decline"
+          },
+          "sample_size": {
+            "current_n": 350,
+            "previous_n": 350,
+            "sufficient": true
+          }
+        },
+        "confidence_score": 0.8,
+        "confidence_rationale": "Strong statistical evidence with large effect size and sufficient sample",
+        "limitations": [
+          "Limited to available data dimensions",
+          "Cannot account for external factors"
+        ],
+        "actionable": true,
+        "recommended_action": "Investigate further and test solutions"
+      }
+    },
+    {
+      "timestamp": "2025-11-27T19:51:14.122340",
+      "insight": {
+        "id": "H1",
+        "hypothesis": "Overall ROAS decline of 3%",
+        "validation_method": "Statistical testing + segment comparison",
+        "statistical_tests": [
+          {
+            "test_name": "Two-sample t-test",
+            "comparison": "Overall ROAS (current vs previous)",
+            "statistic": -0.1,
+            "p_value": 0.9171,
+            "significant": false,
+            "effect_size": "small (Cohen's d = 0.01)"
+          }
+        ],
+        "quantitative_evidence": {
+          "metric_change": {
+            "metric": "ROAS",
+            "current": 7.87,
+            "previous": 7.96,
+            "absolute_change": -0.09,
+            "percent_change": -1.2,
+            "direction": "decline"
+          },
+          "sample_size": {
+            "current_n": 350,
+            "previous_n": 350,
+            "sufficient": true
+          }
+        },
+        "confidence_score": 0.8,
+        "confidence_rationale": "Strong statistical evidence with large effect size and sufficient sample",
+        "limitations": [
+          "Limited to available data dimensions",
+          "Cannot account for external factors"
+        ],
+        "actionable": true,
+        "recommended_action": "Investigate further and test solutions"
+      }
+    }
+  ],
+  "successful_patterns": [],
+  "failed_hypotheses": [],
+  "creative_performance": {},
+  "run_count": 7
+}

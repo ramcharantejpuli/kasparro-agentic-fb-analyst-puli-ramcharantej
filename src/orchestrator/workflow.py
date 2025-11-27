@@ -10,21 +10,32 @@ from agents.data_agent import DataAgent
 from agents.insight_agent import InsightAgent
 from agents.evaluator import EvaluatorAgent
 from agents.creative_generator import CreativeGeneratorAgent
+from agents.llm_client import LLMClient
+from agents.memory import AgentMemory
+from orchestrator.parallel_executor import ParallelExecutor
 from utils.logger import AgentLogger
 from utils.config_loader import load_config, get_data_path
 
 
 class AgenticWorkflow:
-    """Orchestrates the multi-agent workflow."""
+    """Orchestrates the multi-agent workflow with parallel execution."""
     
     def __init__(self, config_path: str = "config/config.yaml"):
         self.config = load_config(config_path)
         self.logger = AgentLogger(self.config['output']['logs_dir'])
+        self.memory = AgentMemory()
+        self.parallel_executor = ParallelExecutor(max_workers=3)
         
-        # Initialize agents
-        self.planner = PlannerAgent(self.config)
+        # Initialize LLM client (shared across agents)
+        self.llm_client = LLMClient(
+            model=self.config['model']['name'],
+            temperature=self.config['model']['temperature']
+        )
+        
+        # Initialize agents with LLM support
+        self.planner = PlannerAgent(self.config, self.llm_client)
         self.data_agent = DataAgent(self.config)
-        self.insight_agent = InsightAgent(self.config)
+        self.insight_agent = InsightAgent(self.config, self.llm_client)
         self.evaluator = EvaluatorAgent(self.config)
         self.creative_generator = CreativeGeneratorAgent(self.config)
         
@@ -77,11 +88,16 @@ class AgenticWorkflow:
             self.logger.log_agent_execution("evaluator", insights, validated)
             print(f"✓ Validated: {validated['summary']['high_confidence']} high-confidence insights")
             
-            # Step 5: Creative Generation
+            # Step 5: Creative Generation (can run in parallel with report prep)
             print("\n🎨 Step 5: Generating creative recommendations...")
             creatives = self.creative_generator.generate_recommendations(validated, df, plan)
             self.logger.log_agent_execution("creative_generator", validated, creatives)
             print(f"✓ Generated recommendations for {len(creatives['recommendations'])} segments")
+            
+            # Store insights in memory for future runs
+            for hyp in validated['validated_hypotheses']:
+                if hyp['confidence_score'] >= 0.7:
+                    self.memory.add_insight(hyp)
             
             # Step 6: Generate Reports
             print("\n📝 Step 6: Generating reports...")

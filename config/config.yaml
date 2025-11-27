@@ -16,6 +16,15 @@ model:
   name: "gpt-4o-mini"
   temperature: 0.7
   max_tokens: 2000
+  use_llm: true  # Set to false for rule-based only
+
+parallel_execution:
+  enabled: true
+  max_workers: 3
+
+memory:
+  enabled: true
+  memory_dir: "memory"
 
 output:
   reports_dir: "reports"

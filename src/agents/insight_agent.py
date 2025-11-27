@@ -2,6 +2,10 @@
 import json
 from typing import Dict, Any, List
 from pathlib import Path
+import sys
+sys.path.append(str(Path(__file__).parent.parent))
+from agents.llm_client import LLMClient
+from agents.memory import AgentMemory
 
 
 class InsightAgent:
@@ -9,7 +13,11 @@ class InsightAgent:
     
     def __init__(self, config: Dict[str, Any], llm_client=None):
         self.config = config
-        self.llm_client = llm_client
+        self.llm_client = llm_client or LLMClient(
+            model=config['model']['name'],
+            temperature=config['model']['temperature']
+        )
+        self.memory = AgentMemory()
         self.prompt_template = self._load_prompt()
     
     def _load_prompt(self) -> str:
@@ -22,9 +30,83 @@ class InsightAgent:
     def generate_hypotheses(self, plan: Dict[str, Any], 
                            data_summary: Dict[str, Any]) -> Dict[str, Any]:
         """Generate hypotheses from data summary."""
-        # Rule-based hypothesis generation
-        # In production, this would use LLM with the prompt template
+        # Try LLM-powered generation first
+        if self.llm_client.is_available():
+            return self._generate_with_llm(plan, data_summary)
         
+        # Fallback to rule-based generation
+        return self._generate_rule_based(plan, data_summary)
+    
+    def _generate_with_llm(self, plan: Dict[str, Any], 
+                          data_summary: Dict[str, Any]) -> Dict[str, Any]:
+        """Generate hypotheses using LLM."""
+        # Get similar past insights from memory
+        similar_insights = self.memory.get_similar_insights(plan['query_interpretation'])
+        
+        # Construct prompt
+        prompt = f"""
+You are an expert marketing analyst. Analyze this Facebook Ads performance data and generate hypotheses.
+
+QUERY: {plan['query_interpretation']}
+PRIMARY METRIC: {plan['primary_metric']}
+
+DATA SUMMARY:
+{json.dumps(data_summary, indent=2)}
+
+PAST INSIGHTS (for context):
+{json.dumps(similar_insights[-3:], indent=2) if similar_insights else "None"}
+
+Generate 3-5 hypotheses following this structure:
+- Use Think → Analyze → Conclude reasoning
+- Provide specific evidence from data
+- Assign initial confidence (0-1)
+- Make hypotheses testable
+
+Return JSON with this schema:
+{{
+  "analysis_context": {{
+    "primary_observation": "string",
+    "time_period": "string",
+    "key_metrics_affected": ["string"]
+  }},
+  "hypotheses": [
+    {{
+      "id": "H1",
+      "hypothesis": "string",
+      "reasoning": {{
+        "think": "string",
+        "analyze": "string",
+        "conclude": "string"
+      }},
+      "supporting_evidence": ["string"],
+      "affected_segments": ["string"],
+      "initial_confidence": 0.75,
+      "testable": true,
+      "test_method": "string"
+    }}
+  ]
+}}
+"""
+        
+        result = self.llm_client.generate(
+            prompt=prompt,
+            system_prompt=self.prompt_template,
+            response_format="json"
+        )
+        
+        if result.get("status") == "fallback":
+            return self._generate_rule_based(plan, data_summary)
+        
+        # Store successful insights in memory
+        for hyp in result.get("hypotheses", []):
+            if hyp.get("initial_confidence", 0) > 0.7:
+                self.memory.add_insight(hyp)
+        
+        return result
+    
+    def _generate_rule_based(self, plan: Dict[str, Any], 
+                            data_summary: Dict[str, Any]) -> Dict[str, Any]:
+        """Generate hypotheses using rule-based logic."""
         hypotheses = []
         primary_metric = plan['primary_metric']
         
