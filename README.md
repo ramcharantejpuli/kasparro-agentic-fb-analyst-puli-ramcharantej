@@ -44,7 +44,7 @@ make run  # or: python src/run.py "Analyze ROAS drop"
 
 ## Release
 - Tag: `v1.0`
-- Link: https://github.com/<username>/kasparro-agentic-fb-analyst-puli-ramcharantej/releases/tag/v1.0
+- Link: https://github.com/ramcharantejpuli/kasparro-agentic-fb-analyst-puli-ramcharantej/releases/tag/v1.0
 
 ## Self-Review
 - See `SELF_REVIEW.md` for design choices & tradeoffs
